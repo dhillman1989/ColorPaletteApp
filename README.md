@@ -1,2 +1,0 @@
-# ColorPaletteApp
-Created with CodeSandbox
