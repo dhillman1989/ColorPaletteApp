@@ -4,7 +4,6 @@ import "./MiniPalette.css";
 
 const styles = {
   root: {
-    width: "200px",
     backgroundColor: "white",
     border: "1px solid black",
     borderRadius: "5px",
