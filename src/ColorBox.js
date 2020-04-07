@@ -18,6 +18,17 @@ const styles = {
       opacity: "1"
     }
   },
+  boxContent: {
+    position: "absolute",
+    padding: "10px",
+    width: "100%",
+    bottom: "0px",
+    left: "0px",
+    color: "#000",
+    letterSpacing: "1px",
+    fontSize: "12px",
+    textTransform: "uppercase"
+  },
   copyText: {
     color: props =>
       chroma(props.background).luminance() >= 0.7 ? "black" : "white"
@@ -66,6 +77,55 @@ const styles = {
     textTransform: "uppercase",
     opacity: "0",
     textDecoration: "none"
+  },
+  copyOverlay: {
+    opacity: "0",
+    zIndex: "0",
+    width: "100%",
+    height: "100%",
+    transform: "scale(0.1)"
+  },
+  showOverlay: {
+    opacity: "1",
+    transform: "scale(50)",
+    zIndex: "10",
+    position: "absolute",
+    transition: "transform 1.5s ease-in-out"
+  },
+  copyMsg: {
+    position: "fixed",
+    left: "0",
+    right: "0",
+    top: "0",
+    bottom: "0",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textTransform: "uppercase",
+    fontSize: "3rem",
+    transform: "scale(0.1)",
+    opacity: "0",
+    color: "#fff",
+    "& h1": {
+      width: "100%",
+      textAlign: "center",
+      fontWeight: "400",
+      textShadow: "1px 2px #000",
+      background: "rgba(255, 255, 255, 0.2)",
+      padding: "1rem"
+    },
+    "& p": {
+      fontSize: "2.5rem",
+      fontWeight: "100"
+    }
+  },
+  showMsg: {
+    opacity: "1",
+    transform: "scale(1)",
+    zIndex: "25",
+    transition: "all 0.4s ease-in-out",
+    transitionDelay: "0.4s"
   }
 };
 
@@ -98,14 +158,15 @@ class ColorBox extends Component {
         <div className={classes.ColorBox} style={{ background }}>
           <div
             style={{ background }}
-            className={`copy-overlay ${copied && "show"}`}
+            className={`${classes.copyOverlay} ${copied &&
+              classes.showOverlay}`}
           />
-          <div className={`copy-msg ${copied && "show"}`}>
+          <div className={`${classes.copyMsg} ${copied && classes.showMsg}`}>
             <h1>copied</h1>
             <p className={classes.copyText}>{background}</p>
           </div>
           <div className="copy-container">
-            <div className="box-content">
+            <div className={classes.boxContent}>
               <span className={classes.colorName}>{name}</span>
             </div>
             <button className={classes.copyButton}>copy</button>
