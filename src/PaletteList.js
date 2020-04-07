@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./PaletteList.css";
 import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/styles";
-import { Link } from "react-router-dom";
 
 const styles = {
   root: {
@@ -35,9 +34,6 @@ const styles = {
 };
 
 class PaletteList extends Component {
-  constructor(props) {
-    super(props);
-  }
   gotoPalette(id) {
     this.props.history.push(`/palette/${id}`);
   }
