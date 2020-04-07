@@ -7,9 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
-
 import "./Navbar.css";
-import { BottomNavigation } from "@material-ui/core";
 
 class Navbar extends Component {
   constructor(props) {
@@ -26,25 +24,27 @@ class Navbar extends Component {
     this.setState({ snackOpen: false });
   }
   render() {
-    const { level, changeLevel } = this.props;
+    const { level, changeLevel, showSlider } = this.props;
     const { format } = this.state;
     return (
       <header className="Navbar">
         <div className="logo">
           <Link to="/">React Color Picker</Link>
         </div>
-        <div className="sliderContainer">
-          <span>Level: {level}</span>
-          <div className="slider">
-            <Slider
-              defaultValue={level}
-              min={100}
-              max={900}
-              step={100}
-              onAfterChange={changeLevel}
-            />
+        {showSlider && (
+          <div className="sliderContainer">
+            <span>Level: {level}</span>
+            <div className="slider">
+              <Slider
+                defaultValue={level}
+                min={100}
+                max={900}
+                step={100}
+                onAfterChange={changeLevel}
+              />
+            </div>
           </div>
-        </div>
+        )}
         <div className="select-container">
           <Select value={format} onChange={this.handleFormatChange}>
             <MenuItem value="hex">HEX - #ffffff</MenuItem>
