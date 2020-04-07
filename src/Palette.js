@@ -18,10 +18,10 @@ export default class Palette extends Component {
     this.setState({ format: val });
   }
   render() {
-    const { colors } = this.props.palette;
+    const { colors, paletteName } = this.props.palette;
     const { level, format } = this.state;
     const colorBoxes = colors[level].map(color => (
-      <ColorBox background={color[format]} name={color.name} />
+      <ColorBox background={color[format]} key={color.id} name={color.name} />
     ));
     return (
       <div className="Palette">
@@ -31,7 +31,8 @@ export default class Palette extends Component {
           handleChange={this.changeFormat}
         />
         <div className="Palette-colors">{colorBoxes}</div>
-        {/*Footer to go here */}
+
+        <footer className="Palette-footer">{paletteName}</footer>
       </div>
     );
   }
