@@ -28,7 +28,7 @@ export default class Palette extends Component {
         name={color.name}
         id={color.id}
         paletteId={id}
-        showLink={true}
+        showFullPalette={true}
       />
     ));
     return (
@@ -39,7 +39,8 @@ export default class Palette extends Component {
           handleChange={this.changeFormat}
           showSlider={true}
         />
-        <div className="Palette-colors">{colorBoxes}</div>
+        <div className="Palette-colors">{colorBoxes}</div>s
+        <PaletteFooter paletteName={paletteName} />
       </div>
     );
   }
