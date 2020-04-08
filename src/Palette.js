@@ -42,7 +42,7 @@ class Palette extends Component {
           handleChange={this.changeFormat}
           showSlider={true}
         />
-        <div className={classes.PaletteColors}>{colorBoxes}</div>s
+        <div className={classes.PaletteColors}>{colorBoxes}</div>
         <PaletteFooter
           className={classes.PaletteFooter}
           paletteName={paletteName}
