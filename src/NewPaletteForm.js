@@ -14,7 +14,7 @@ import Button from "@material-ui/core/Button";
 import { ChromePicker } from "react-color";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
-import DraggableColorBox from "./DraggableColorBox";
+import DraggableColorList from "./DraggableColorList";
 
 const drawerWidth = 400;
 const styles = theme => ({
@@ -244,14 +244,7 @@ class NewPaletteForm extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          {colors.map(color => (
-            <DraggableColorBox
-              key={color.name}
-              color={color.color}
-              name={color.name}
-              handleClick={() => this.removeColor(color.name)}
-            />
-          ))}
+          <DraggableColorList colors={colors} removeColor={this.removeColor} />
         </main>
       </div>
     );
