@@ -60,7 +60,7 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     height: "calc(100vh - 64px)",
-    padding: "20px",
+    padding: 0,
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -81,7 +81,7 @@ class NewPaletteForm extends Component {
     this.state = {
       open: true,
       currentColor: "teal",
-      colors: [],
+      colors: this.props.palettes[0].colors,
       newColorName: "",
       newPaletteName: ""
     };
@@ -91,6 +91,8 @@ class NewPaletteForm extends Component {
     this.savePalette = this.savePalette.bind(this);
     this.removeColor = this.removeColor.bind(this);
     this.onSortEnd = this.onSortEnd.bind(this);
+    this.clearPalette = this.clearPalette.bind(this);
+    this.addRandomColor = this.addRandomColor.bind(this);
   }
   componentDidMount() {
     ValidatorForm.addValidationRule("isColorNameUnique", value =>
@@ -149,6 +151,14 @@ class NewPaletteForm extends Component {
     this.setState(({ colors }) => ({
       colors: arrayMove(colors, oldIndex, newIndex)
     }));
+  }
+  clearPalette() {
+    this.setState({ colors: [] });
+  }
+  addRandomColor() {
+    const allColors = this.props.palettes.map(p => p.colors).flat();
+    const randNum = Math.floor(Math.random() * allColors.length);
+    this.setState({ colors: [...this.state.colors, allColors[randNum]] });
   }
   render() {
     const { classes } = this.props;
@@ -212,10 +222,18 @@ class NewPaletteForm extends Component {
           <Divider />
           <Typography variant="h4">Design Your Palette</Typography>
           <div>
-            <Button variant="contained" color="secondary">
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={this.clearPalette}
+            >
               Clear Palette
             </Button>
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.addRandomColor}
+            >
               Random Color
             </Button>
           </div>
