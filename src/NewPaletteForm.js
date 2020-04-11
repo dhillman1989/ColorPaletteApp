@@ -76,6 +76,7 @@ const styles = theme => ({
   }
 });
 class NewPaletteForm extends Component {
+  static defaultProps = { maxColors: 20 };
   constructor(props) {
     super(props);
     this.state = {
@@ -161,8 +162,9 @@ class NewPaletteForm extends Component {
     this.setState({ colors: [...this.state.colors, allColors[randNum]] });
   }
   render() {
-    const { classes } = this.props;
+    const { classes, maxColors } = this.props;
     const { open, colors } = this.state;
+    const paletteFull = colors.length >= maxColors;
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -233,6 +235,7 @@ class NewPaletteForm extends Component {
               variant="contained"
               color="primary"
               onClick={this.addRandomColor}
+              disabled={paletteFull}
             >
               Random Color
             </Button>
@@ -250,14 +253,17 @@ class NewPaletteForm extends Component {
               errorMessages={[
                 "Please provide a name.",
                 "Name already in use.",
-                "Color Already added. No Duplicates allowed."
+                "Color Already added. No Duplicates allowe d."
               ]}
             />
             <Button
               variant="contained"
               color="primary"
-              style={{ backgroundColor: this.state.currentColor }}
+              style={{
+                backgroundColor: paletteFull ? "grey" : this.state.currentColor
+              }}
               type="submit"
+              disabled={paletteFull}
             >
               Add Color
             </Button>
