@@ -11,6 +11,8 @@ import Button from "@material-ui/core/Button";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { withStyles } from "@material-ui/core/styles";
 
+import PaletteMetaForm from "./PaletteMetaForm";
+
 const drawerWidth = 350;
 
 const styles = theme => ({
@@ -47,21 +49,10 @@ class PaletteFormNav extends Component {
     this.state = {
       newPaletteName: ""
     };
-    this.handleChange = this.handleChange.bind(this);
-  }
-  componentDidMount() {
-    ValidatorForm.addValidationRule("isNameUnique", value =>
-      this.props.palettes.every(
-        ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-      )
-    );
-  }
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
-    const { classes, open } = this.props;
+    const { classes, open, palettes, handleSubmit } = this.props;
     const { newPaletteName } = this.state;
     return (
       <div className={classes.root}>
@@ -87,25 +78,7 @@ class PaletteFormNav extends Component {
             </Typography>
           </Toolbar>
           <div className={classes.navBtns}>
-            <ValidatorForm
-              onSubmit={() => this.props.handleSubmit(newPaletteName)}
-            >
-              <TextValidator
-                value={this.state.newPaletteName}
-                name="newPaletteName"
-                label="Palette Name"
-                onChange={this.handleChange}
-                validators={["required", "isNameUnique"]}
-                errorMessages={[
-                  "Please provide a name for your new Palette",
-                  "Palette Name already in use!"
-                ]}
-              />
-
-              <Button type="submit" variant="contained" color="primary">
-                Save Palette
-              </Button>
-            </ValidatorForm>
+            <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />
             <Link to="/">
               <Button variant="contained" color="secondary">
                 Go Back
