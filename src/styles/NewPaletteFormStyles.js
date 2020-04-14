@@ -6,9 +6,6 @@ const styles = theme => ({
   root: {
     display: "flex"
   },
-  hide: {
-    display: "none"
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0
@@ -22,6 +19,7 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     padding: "0 8px",
+    width: "100%",
     ...theme.mixins.toolbar,
     justifyContent: "flex-end"
   },
