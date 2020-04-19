@@ -2,16 +2,18 @@ import { DRAWER_WIDTH } from "../constants";
 
 const drawerWidth = DRAWER_WIDTH;
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     display: "flex"
   },
   drawer: {
     width: drawerWidth,
+    maxWidth: "100%",
     flexShrink: 0
   },
   drawerPaper: {
     width: drawerWidth,
+    maxWidth: "100%",
     display: "flex",
     alignItems: "center"
   },

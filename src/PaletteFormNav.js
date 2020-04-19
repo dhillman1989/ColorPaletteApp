@@ -42,8 +42,7 @@ class PaletteFormNav extends Component {
           position="fixed"
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open
-          })}
-        >
+          })}>
           <Toolbar disableGutters={!open}>
             <IconButton
               color="inherit"
@@ -51,8 +50,7 @@ class PaletteFormNav extends Component {
               onClick={this.props.handleDrawerOpen}
               className={classNames(classes.menuButton, {
                 [classes.hide]: open
-              })}
-            >
+              })}>
               <ChevronRightIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
@@ -64,18 +62,16 @@ class PaletteFormNav extends Component {
               <Button
                 className={classes.button}
                 variant="contained"
-                color="secondary"
-              >
-                Go Back
+                color="secondary">
+                Back
               </Button>
             </Link>
             <Button
               className={classes.button}
               variant="contained"
               color="primary"
-              onClick={this.showForm}
-            >
-              SAVE PALETTE
+              onClick={this.showForm}>
+              SAVE
             </Button>
           </div>
         </AppBar>
