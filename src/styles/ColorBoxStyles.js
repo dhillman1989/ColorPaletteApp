@@ -14,7 +14,7 @@ export default {
     },
     [sizes.down("lg")]: {
       width: "25%",
-      height: props => (props.showFullPalette ? "20%" : "40%")
+      height: props => (props.showFullPalette ? "20%" : "33.3333%")
     },
     [sizes.down("md")]: {
       width: "50%",
@@ -120,7 +120,16 @@ export default {
       fontWeight: "400",
       textShadow: "1px 2px #000",
       background: "rgba(255, 255, 255, 0.2)",
-      padding: "1rem"
+      padding: "1rem",
+      [sizes.down("lg")]: {
+        fontSize: "6rem"
+      },
+      [sizes.down("md")]: {
+        fontSize: "4.5rem"
+      },
+      [sizes.down("xs")]: {
+        fontSize: "3rem"
+      }
     },
     "& p": {
       fontSize: "2.5rem",
