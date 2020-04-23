@@ -6,7 +6,7 @@ export default {
       transform: "scale(1)"
     },
     ".fade-exit-active": {
-      transform: "scale(0)",
+      transform: "scale(0) rotate(360deg)",
       transition: "transform 0.7s ease-out"
     }
   },

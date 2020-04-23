@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -17,7 +16,7 @@ class PaletteMetaForm extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount() {
-    ValidatorForm.addValidationRule("isNameUnique", value =>
+    ValidatorForm.addValidationRule("isNameUnique", (value) =>
       this.props.palettes.every(
         ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
       )
@@ -39,8 +38,7 @@ class PaletteMetaForm extends Component {
       <Dialog
         open={open}
         onClose={hideForm}
-        aria-labelledby="form-dialog-title"
-      >
+        aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Save Palette</DialogTitle>
         <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
           <DialogContent>
