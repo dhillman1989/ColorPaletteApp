@@ -1,12 +1,22 @@
 import sizes from "./sizes";
 
 export default {
+  "@global": {
+    ".fade-exit": {
+      transform: "scale(1)"
+    },
+    ".fade-exit-active": {
+      transform: "scale(0)",
+      transition: "transform 0.7s ease-out"
+    }
+  },
   root: {
-    backgroundColor: "blue",
     height: "100vh",
     display: "flex",
     alignItems: "flex-start",
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor: "#222",
+    overflow: "scroll"
   },
   container: {
     width: "60%",
@@ -15,10 +25,13 @@ export default {
     flexDirection: "column",
     flexWrap: "wrap",
     [sizes.down("xl")]: {
-      width: "60%"
+      width: "50%"
+    },
+    [sizes.down("md")]: {
+      width: "50%"
     },
     [sizes.down("xs")]: {
-      width: "75%"
+      width: "50%"
     }
   },
   nav: {

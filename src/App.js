@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-
 import Palette from "./Palette";
 import SingleColorPalette from "./SingleColorPalette";
 import PaletteList from "./PaletteList";
@@ -35,8 +34,8 @@ class App extends Component {
   }
   deletePalette(id) {
     this.setState(
-      st => ({
-        palettes: st.palettes.filter(palette => palette.id !== id)
+      (st) => ({
+        palettes: st.palettes.filter((palette) => palette.id !== id)
       }),
       this.syncLocalStorage
     );
@@ -53,7 +52,7 @@ class App extends Component {
         <Route
           exact
           path="/palette/new"
-          render={rp => (
+          render={(rp) => (
             <NewPaletteForm
               savePalette={this.savePalette}
               palettes={this.state.palettes}
@@ -64,7 +63,7 @@ class App extends Component {
         <Route
           exact
           path="/"
-          render={rp => (
+          render={(rp) => (
             <PaletteList
               palettes={this.state.palettes}
               deletePalette={this.deletePalette}
@@ -75,7 +74,7 @@ class App extends Component {
         <Route
           exact
           path="/palette/:id"
-          render={rp => (
+          render={(rp) => (
             <Palette
               palette={generatePalette(this.findPalette(rp.match.params.id))}
             />
@@ -83,7 +82,7 @@ class App extends Component {
         />
         <Route
           path="/palette/:paletteId/:colorId"
-          render={rp => (
+          render={(rp) => (
             <SingleColorPalette
               colorId={rp.match.params.colorId}
               palette={generatePalette(
