@@ -16,7 +16,7 @@ export default {
     alignItems: "flex-start",
     justifyContent: "center",
     backgroundColor: "#222",
-    overflow: "scroll"
+    overflow: "auto"
   },
   container: {
     width: "60%",
