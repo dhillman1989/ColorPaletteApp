@@ -3,11 +3,13 @@ import sizes from "./sizes";
 export default {
   "@global": {
     ".fade-exit": {
-      transform: "scale(1)"
+      transform: "scale(1)",
+      opacity: 1
     },
     ".fade-exit-active": {
+      opacity: 0,
       transform: "scale(0) rotate(360deg)",
-      transition: "transform 0.7s ease-out"
+      transition: "all 0.7s ease-out"
     }
   },
   root: {

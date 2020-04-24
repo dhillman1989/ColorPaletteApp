@@ -60,7 +60,7 @@ class NewPaletteForm extends Component {
   }
   removeColor(colorName) {
     this.setState({
-      colors: this.state.colors.filter(color => color.name !== colorName)
+      colors: this.state.colors.filter((color) => color.name !== colorName)
     });
   }
   onSortEnd({ oldIndex, newIndex }) {
@@ -72,7 +72,7 @@ class NewPaletteForm extends Component {
     this.setState({ colors: [] });
   }
   addRandomColor() {
-    const allColors = this.props.palettes.map(p => p.colors).flat();
+    const allColors = this.props.palettes.map((p) => p.colors).flat();
     const randNum = Math.floor(Math.random() * allColors.length);
     this.setState({ colors: [...this.state.colors, allColors[randNum]] });
   }
@@ -95,8 +95,7 @@ class NewPaletteForm extends Component {
           open={open}
           classes={{
             paper: classes.drawerPaper
-          }}
-        >
+          }}>
           <div className={classes.drawerHeader}>
             <IconButton onClick={this.handleDrawerClose}>
               <ChevronLeftIcon />
@@ -112,8 +111,7 @@ class NewPaletteForm extends Component {
                 className={classes.button}
                 variant="contained"
                 color="secondary"
-                onClick={this.clearPalette}
-              >
+                onClick={this.clearPalette}>
                 Clear Palette
               </Button>
               <Button
@@ -121,8 +119,7 @@ class NewPaletteForm extends Component {
                 variant="contained"
                 color="primary"
                 onClick={this.addRandomColor}
-                disabled={paletteFull}
-              >
+                disabled={paletteFull}>
                 Random Color
               </Button>
             </div>
@@ -136,14 +133,14 @@ class NewPaletteForm extends Component {
         <main
           className={classNames(classes.content, {
             [classes.contentShift]: open
-          })}
-        >
+          })}>
           <div className={classes.drawerHeader} />
           <DraggableColorList
             colors={colors}
             removeColor={this.removeColor}
             axis="xy"
             onSortEnd={this.onSortEnd}
+            distance={10}
           />
         </main>
       </div>

@@ -9,9 +9,9 @@ const styles = {
     display: "inline-block",
     cursor: "pointer",
     marginBottom: "-6px",
+    oveflow: "hidden",
     "&:hover svg": {
-      color: "#fff",
-      transform: "scale(1.5)"
+      color: "#fff"
     },
     [sizes.down("lg")]: {
       width: "25%",
