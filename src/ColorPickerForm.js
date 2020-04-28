@@ -15,12 +15,12 @@ class ColorPickerForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    ValidatorForm.addValidationRule("isColorNameUnique", value =>
+    ValidatorForm.addValidationRule("isColorNameUnique", (value) =>
       this.props.colors.every(
         ({ name }) => name.toLowerCase() !== value.toLowerCase()
       )
     );
-    ValidatorForm.addValidationRule("isColorUnique", value =>
+    ValidatorForm.addValidationRule("isColorUnique", (value) =>
       this.props.colors.every(({ color }) => color !== this.state.currentColor)
     );
   }
@@ -48,7 +48,7 @@ class ColorPickerForm extends Component {
           className={classes.picker}
           onChangeComplete={this.updateCurrentColor}
         />
-        <ValidatorForm onSubmit={this.handleSubmit}>
+        <ValidatorForm onSubmit={this.handleSubmit} instantValidate={false}>
           <TextValidator
             placeholder="Color name"
             variant="filled"
@@ -71,8 +71,7 @@ class ColorPickerForm extends Component {
               backgroundColor: paletteFull ? "grey" : this.state.currentColor
             }}
             type="submit"
-            disabled={paletteFull}
-          >
+            disabled={paletteFull}>
             Add Color
           </Button>
         </ValidatorForm>
