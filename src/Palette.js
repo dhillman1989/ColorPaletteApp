@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/styles";
-import styles from "./styles/PaletteStyles";
 
 import Navbar from "./Navbar";
 import ColorBox from "./ColorBox";
 import PaletteFooter from "./PaletteFooter";
+import styles from "./styles/PaletteStyles";
 
 class Palette extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Palette extends Component {
     const { classes } = this.props;
     const { colors, paletteName, id } = this.props.palette;
     const { level, format } = this.state;
-    const colorBoxes = colors[level].map(color => (
+    const colorBoxes = colors[level].map((color) => (
       <ColorBox
         background={color[format]}
         key={color.id}

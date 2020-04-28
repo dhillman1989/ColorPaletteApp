@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -33,7 +34,7 @@ class PaletteMetaForm extends Component {
   }
   render() {
     const { newPaletteName, open } = this.state;
-    const { palettes, hideForm, handleSubmit } = this.props;
+    const { hideForm, handleSubmit } = this.props;
     return (
       <Dialog
         open={open}
