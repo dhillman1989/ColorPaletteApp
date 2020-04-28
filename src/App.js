@@ -64,7 +64,7 @@ class App extends Component {
                     <Page>
                       <NewPaletteForm
                         savePalette={this.savePalette}
-                        palettes={this.state.palettes}
+                        palettes={seedColors}
                         {...rp}
                       />
                     </Page>
