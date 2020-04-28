@@ -3,6 +3,7 @@ import { withStyles } from "@material-ui/styles";
 import chroma from "chroma-js";
 import { Link } from "react-router-dom";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import classNames from "classnames";
 
 import styles from "./styles/ColorBoxStyles";
 
@@ -35,10 +36,15 @@ class ColorBox extends Component {
         <div className={classes.ColorBox} style={{ background }}>
           <div
             style={{ background }}
-            className={`${classes.copyOverlay} ${copied &&
-              classes.showOverlay}`}
+            className={classNames(classes.copyOverlay, {
+              [classes.showOverlay]: copied
+            })}
           />
-          <div className={`${classes.copyMsg} ${copied && classes.showMsg}`}>
+
+          <div
+            className={classNames(classes.copyMsg, {
+              [classes.showMsg]: copied
+            })}>
             <h1>copied</h1>
             <p className={classes.copyText}>{background}</p>
           </div>
@@ -51,8 +57,7 @@ class ColorBox extends Component {
           {showFullPalette && (
             <Link
               to={`/palette/${paletteId}/${id}`}
-              onClick={e => e.stopPropagation()}
-            >
+              onClick={(e) => e.stopPropagation()}>
               <span className={classes.seeMore}>More</span>
             </Link>
           )}
